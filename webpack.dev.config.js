@@ -1,9 +1,10 @@
 const {resolve} = require('path')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCSSExtractPlugin = require("mini-css-extract-plugin")
+const ESLintPlugin = require("eslint-webpack-plugin")
 
 const config = {
-  entry: "./client/main.js",
+  entry: "./client/main.jsx",
   mode: "development",
   output: {
     filename: "js/[name].bundle.js",
@@ -34,8 +35,8 @@ const config = {
           {
             loader: MiniCSSExtractPlugin.loader,
             options: {
-              publicPath: '../'
-            }
+              publicPath: "../",
+            },
           },
           {
             loader: "css-loader",
@@ -49,8 +50,12 @@ const config = {
     ],
   },
   plugins: [
+    new ESLintPlugin({
+      extensions: ["js", "jsx"],
+      failOnError: true,
+    }),
     new MiniCSSExtractPlugin({
-      filename: 'css/main.css'
+      filename: "css/main.css",
     }),
     new CopyWebpackPlugin({
       patterns: [
