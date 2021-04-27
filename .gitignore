@@ -1,0 +1,16 @@
+dist
+
+# npm debug log
+npm-debug.log
+
+# vs code
+.vscode
+
+# NodeJS modules folder
+node_modules
+
+yarn-error.log
+.env
+
+
+
